@@ -275,14 +275,3 @@ HOTEL_AD = [
 HOTEL_AD_PATTERN = "|".join(HOTEL_AD)
 HOTEL_AD_RE = re.compile(HOTEL_AD_PATTERN, re.MULTILINE)
 HOTEL_AD_THRESHOLD = 4
-
-
-
-
-
-
-
-
-
-
-
