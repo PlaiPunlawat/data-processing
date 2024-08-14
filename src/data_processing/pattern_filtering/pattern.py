@@ -165,12 +165,12 @@ def clean_with_remove_document(text: str) -> bool:
             
             # Find all matches in the text up to the threshold
             # หาคำที่ตรงกับรูปแบบในข้อความและเก็บใน matches
-            matches = WORD_PATTERN.findall(text)[:WORD_THRESHOLD]
+            matches = WORD_PATTERN.findall(text)
             
             # If the number of matches meets the threshold, return True
             # ถ้าจำนวนคำที่ตรงกับรูปแบบถึงเกณฑ์ที่กำหนด คืนค่า True
             print(len(matches), WORD_THRESHOLD)
-            if len(matches) == WORD_THRESHOLD:
+            if len(matches) >= WORD_THRESHOLD:
                 return True
     else:
         # If specific word pattern filters are provided, process only those
@@ -186,11 +186,11 @@ def clean_with_remove_document(text: str) -> bool:
                 
                 # Find all matches in the text up to the threshold
                 # หาคำที่ตรงกับรูปแบบในข้อความและเก็บใน matches
-                matches = WORD_PATTERN.findall(text)[:WORD_THRESHOLD]
+                matches = WORD_PATTERN.findall(text)
                 
                 # If the number of matches meets the threshold, return True
                 # ถ้าจำนวนคำที่ตรงกับรูปแบบถึงเกณฑ์ที่กำหนด คืนค่า True
-                if len(matches) == WORD_THRESHOLD:
+                if len(matches) >= WORD_THRESHOLD:
                     return True
 
     # If no patterns meet their threshold, return False
