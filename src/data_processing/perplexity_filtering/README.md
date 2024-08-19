@@ -18,6 +18,11 @@ The `notebook` folder contains the experiments, observations and EDA notebooks f
     - Compute the PDF (Probability Density Function) of the each log score.
     - Softmax(1-PDF) will be used as probability list for `np.choice` to sample text back. 
 
+## Preparation
+- Download model from google drive
+gdown 1OBbo21v_-esL31rxtNtsMHrA8T1JYqAd
+unzip core.zip -d src/data_processing/perplexity_filtering
+
 ## Running
 
 The code is imported in `src/data/scripts/internet` and you can use it together with mc4 and cc100 regex code there. 

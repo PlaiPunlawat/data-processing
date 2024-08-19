@@ -1,86 +1,15 @@
 import numpy as np
 from tqdm.auto import tqdm
 from datasets import load_from_disk, Features, Sequence, Value
-from datasketch import MinHashLSH, LeanMinHash, MinHash
-from nlpo3 import segment
+from datasketch import MinHashLSH, LeanMinHash
+
+from data_processing.core.constants import MINHASH_SEED
+from data_processing.core.minhash import generate_minhash_signature
 
 DEFAULT_MINHASH_COL_NAME = "text"
 DEFAULT_NUM_PERMUTATION = 128
 N_GRAM = 5
 MINHASH_SEED = 1
-
-
-def generate_minhash_signature(text, num_perm):
-    """
-    ฟังก์ชันนี้มีไว้เพื่อสร้างลายเซ็น MinHash สำหรับข้อความที่ได้รับมา
-    โดยการใช้ n-gram และแฮชจำนวน permutations ที่กำหนดไว้
-    This function generates a MinHash signature for the given text using n-gram and a specified number of hash permutations.
-
-    Parameters:
-    text (str): ข้อความที่ต้องการสร้างลายเซ็น
-                The text for which the MinHash signature is to be generated.
-    num_perm (int): จำนวน permutations ที่จะใช้ในการสร้าง MinHash
-                   The number of hash permutations to be used in generating the MinHash.
-
-    Returns:
-    MinHash: วัตถุ MinHash ที่มีลายเซ็นที่สร้างขึ้นจากข้อความ
-            A MinHash object containing the signature generated from the text.
-    """
-
-    # สร้างวัตถุ MinHash โดยกำหนดค่า seed และจำนวนการแฮช (num_perm)
-    # Create a MinHash object with the specified seed and number of hash permutations.
-    minhash = MinHash(seed=MINHASH_SEED, num_perm=num_perm)
-
-    # แบ่งข้อความออกเป็น tokens โดยใช้ตัวแบ่งคำแบบ "newmm"
-    # Segment the text into tokens using the "newmm" tokenizer.
-    tokens = segment(text, "newmm")
-
-    # กำหนดจำนวน n-gram ที่จะใช้
-    # Define the n-gram size to be used.
-    n_gram = N_GRAM
-
-    # วนลูปผ่าน tokens เพื่อสร้าง n-gram และอัปเดต MinHash ด้วย n-gram เหล่านั้น
-    # Iterate through the tokens to create n-grams and update the MinHash with these n-grams.
-    for i in range(len(tokens) - n_gram + 1):
-        token_gram = "".join(tokens[i: i + n_gram])  # สร้าง n-gram จาก tokens
-        # Create an n-gram from the tokens.
-        # อัปเดต MinHash ด้วย n-gram ที่เข้ารหัสเป็น UTF-8
-        minhash.update(token_gram.encode("utf-8"))
-        # Update the MinHash with the n-gram encoded in UTF-8.
-
-    # ส่งคืน MinHash object ที่สร้างขึ้น
-    # Return the generated MinHash object.
-    return minhash
-
-
-def generate_minhash_signature_hf(
-    doc, num_perm=DEFAULT_NUM_PERMUTATION, col_name=DEFAULT_MINHASH_COL_NAME
-):
-    """
-    ฟังก์ชันนี้มีไว้เพื่อสร้างลายเซ็น MinHash สำหรับเอกสารที่ได้รับมา
-    โดยใช้จำนวน permutations ที่กำหนดและคอลัมน์ของข้อความที่ต้องการ
-    This function generates a MinHash signature for the given document using the specified number of permutations and the desired column of text.
-
-    Parameters:
-    doc (dict): เอกสารที่ต้องการสร้างลายเซ็น MinHash
-                The document (in dictionary format) for which the MinHash signature is to be generated.
-    num_perm (int, optional): จำนวน permutations ที่จะใช้ในการสร้าง MinHash (ค่าเริ่มต้น: DEFAULT_NUM_PERMUTATION)
-                              The number of hash permutations to be used in generating the MinHash (default: DEFAULT_NUM_PERMUTATION).
-    col_name (str, optional): ชื่อคอลัมน์ที่มีข้อความที่ต้องการสร้างลายเซ็น (ค่าเริ่มต้น: DEFAULT_MINHASH_COL_NAME)
-                              The name of the column containing the text to generate the MinHash signature from (default: DEFAULT_MINHASH_COL_NAME).
-
-    Returns:
-    dict: พจนานุกรมที่มีลายเซ็น MinHash ที่สร้างขึ้นจากข้อความในเอกสาร
-          A dictionary containing the MinHash signature generated from the text in the document.
-    """
-
-    # สร้างลายเซ็น MinHash สำหรับข้อความในคอลัมน์ที่กำหนด
-    # Generate a MinHash signature for the text in the specified column.
-    minhash = generate_minhash_signature(doc[col_name], num_perm)
-
-    # ส่งคืนพจนานุกรมที่มี hashvalues ของ MinHash
-    # Return a dictionary containing the hashvalues of the MinHash.
-    return {"hashvalues": minhash.hashvalues}
 
 
 def query_func(item, idx, index):

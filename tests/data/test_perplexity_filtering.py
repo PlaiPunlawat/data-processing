@@ -1,6 +1,5 @@
 from data_processing.perplexity_filtering.perplexity import (
-    classify_spam,
-    sample_text_back,
+    classify_spam
 )
 import pandas as pd
 from datasets import Dataset

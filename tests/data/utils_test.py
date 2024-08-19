@@ -1,5 +1,5 @@
 import os
-from openthaigpt_pretraining_data.utils import read_jsonl
+from data_processing.utils import read_jsonl
 
 FILE_DIR = os.path.dirname(__file__)
 

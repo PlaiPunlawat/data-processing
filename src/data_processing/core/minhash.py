@@ -1,4 +1,4 @@
-from openthaigpt_pretraining_data.core.constants import MINHASH_SEED
+from data_processing.core.constants import MINHASH_SEED
 from nlpo3 import segment
 from datasketch import MinHash
 

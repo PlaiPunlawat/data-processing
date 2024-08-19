@@ -5,7 +5,7 @@ import pandas as pd
 import pickle
 import scipy
 import sentencepiece  # type: ignore
-from openthaigpt_pretraining_data.core.text_normalizer import normalize
+from data_processing.core.text_normalizer import normalize
 from typing import List
 import warnings
 import os

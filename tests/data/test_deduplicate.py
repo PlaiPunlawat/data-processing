@@ -1,11 +1,11 @@
-from openthaigpt_pretraining_data.internet.s3_deduplication.deduplication import (
+from data_processing.deduplication.deduplicate import (
     deduplicate,
 )
 
-from openthaigpt_pretraining_data.internet.s3_deduplication.generate_minhash import (
+from data_processing.deduplication.generate_minhash import (
     generate_minhash,
 )
-from utils_test import compare_dataset
+
 import pandas as pd
 from datasets import Dataset
 
