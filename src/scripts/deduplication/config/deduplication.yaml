@@ -1,0 +1,22 @@
+train_dataset:
+  key: data_processing
+  name: data_processing_dataset
+  available_on_hub: False
+  path_name: /project/lt200258-aithai/may/datasets/sampled_dataset
+  split: train
+  subset:
+
+minhash:
+  newmm_dict: /project/lt200258-aithai/may/data-processing/src/data_processing/deduplication/words_th.txt
+  save_path: /project/lt200258-aithai/may/datasets/sampled_dataset_minhash_128
+
+deduplication:
+  thresold: 0.9
+  minhash_path: /project/lt200258-aithai/may/datasets/sampled_dataset_minhash_128
+  save_path: /project/lt200258-aithai/may/datasets/sampled_dataset_deduplicated_128_09
+  save_path_duplicated: /project/lt200258-aithai/may/datasets/sampled_dataset_duplicated_128_09
+  batch_size: 10000
+
+global_config:
+  num_process: 128
+  num_perm: 128
