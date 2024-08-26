@@ -20,8 +20,8 @@ The `notebook` folder contains the experiments, observations and EDA notebooks f
 
 ## Preparation
 - Download model from google drive
-gdown 1OBbo21v_-esL31rxtNtsMHrA8T1JYqAd
-unzip core.zip -d src/data_processing/perplexity_filtering
+`gdown 1OBbo21v_-esL31rxtNtsMHrA8T1JYqAd
+`unzip core.zip -d src/data_processing/perplexity_filtering
 
 ## Running
 
