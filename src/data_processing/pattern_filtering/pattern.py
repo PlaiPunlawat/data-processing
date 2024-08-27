@@ -2,6 +2,7 @@ from datetime import datetime
 import pandas as pd
 from typing import List, Dict, Pattern
 import re
+import argparse
 
 # Word Pattern
 from data_processing.pattern_filtering.words_pattern import (
@@ -124,8 +125,6 @@ LIST_WORD_PATTERN = [
     {"KEY": "HEX", "VALUE": {"PATTERN": HEX_RE, "THRESHOLD": HEX_THRESHOLD}},
 ]
 
-# Arg parse
-WORD_PATTERN_FILTER = ["GAMBLE", "FOOTBALL"]
 WORD_PATTERN_FILTER = None
 
 def clean_with_remove_document(text: str) -> bool:
@@ -336,3 +335,27 @@ def clean_dataset(dataset: List[Dict[str, str]]) -> List[Dict[str, str]]:
     # ส่งคืนชุดข้อมูลที่ข้อความไม่ว่างเปล่า
     return [data_point for data_point in dataset if data_point["text"] != ""]
 
+
+def main():
+    parser = argparse.ArgumentParser(description='Process pattern filtering')
+
+    # Adding an argument to accept an string pattern
+    parser.add_argument(
+        '-p', '--pattern', 
+        nargs='+', 
+        type=str, 
+        required=False, 
+        help='A list of Pattern to be processed. Example: -p GAMBLE FOOTBALL'
+    )
+
+    args = parser.parse_args()
+
+    # Arg parse
+    if args.pattern is not None:
+        WORD_PATTERN_FILTER = ' '.join(args.pattern)
+    else:
+        WORD_PATTERN_FILTER = None
+
+
+if __name__ == "__main__":
+    main()
