@@ -3,6 +3,7 @@ from data_processing.perplexity_filtering.perplexity import (
 )
 import pandas as pd
 from datasets import Dataset
+import unittest
 
 sample = [
     {
@@ -34,21 +35,24 @@ df_sample = pd.DataFrame({"text": sample})
 ds_sample = Dataset.from_pandas(df_sample)
 
 
-def test_classify_spam():
-    assert (
-        classify_spam(
-            "หนังxจีนมาใหม่ TM0165 แม่เลี้ยงสาวWang Xiaoni หลับอยู่ เจอลูกเลี้ยงชวนเพื่อนมารุมเย็ดแม่เลี้ยง จับมอมยาสลบก่อนลวนลามลงมืดข่มขืนxxx สวิง 3-1 เย็ดจนแตกในซะใจ"
-        )[0]
-        == 1
-    )
+class TestPerplexity(unittest.TestCase):
 
 
-def test_classify_spam2():
-    for text in sample:
-        prediction, log_pp_score = classify_spam(text["doc"])
-        print(prediction.item(), log_pp_score)
-        assert prediction == text["is_spam"]
+    def test_classify_spam(self):
+        assert (
+            classify_spam(
+                "หนังxจีนมาใหม่ TM0165 แม่เลี้ยงสาวWang Xiaoni หลับอยู่ เจอลูกเลี้ยงชวนเพื่อนมารุมเย็ดแม่เลี้ยง จับมอมยาสลบก่อนลวนลามลงมืดข่มขืนxxx สวิง 3-1 เย็ดจนแตกในซะใจ"
+            )[0]
+            == 1
+        )
+
+
+    def test_classify_spam2(self):
+        for text in sample:
+            prediction, log_pp_score = classify_spam(text["doc"])
+            print(prediction.item(), log_pp_score)
+            assert prediction == text["is_spam"]
 
 
 if __name__ == "__main__":
-    test_classify_spam2()
+    unittest.main()
