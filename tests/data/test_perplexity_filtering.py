@@ -37,7 +37,6 @@ ds_sample = Dataset.from_pandas(df_sample)
 
 class TestPerplexity(unittest.TestCase):
 
-
     def test_classify_spam(self):
         assert (
             classify_spam(
@@ -45,7 +44,6 @@ class TestPerplexity(unittest.TestCase):
             )[0]
             == 1
         )
-
 
     def test_classify_spam2(self):
         for text in sample:
