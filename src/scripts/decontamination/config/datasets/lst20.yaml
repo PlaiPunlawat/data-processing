@@ -1,0 +1,7 @@
+lst20:
+  name: LST20
+  available_on_hub: True
+  path: LST20_Corpus
+  path_name: /project/lt200258-aithai/openthai_llm_backup/public_datasets_small
+  split: train
+  subset:

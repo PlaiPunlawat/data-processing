@@ -25,11 +25,8 @@ gdown 1OBbo21v_-esL31rxtNtsMHrA8T1JYqAd
 unzip core.zip -d src/data_processing/perplexity_filtering
 ```
 
-## Running
-
-The code is imported in `src/data/scripts/internet` and you can use it together with mc4 and cc100 regex code there. 
-
-This code is not meant to be run directly. If you want to run with your custom logic please create folder in `src/data/scripts` and import the function you want.
+## How to use
+For details, see [How to use guide](src/scripts/pattern_perplexity/README.md).
 
 ## Note
 
