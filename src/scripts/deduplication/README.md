@@ -1,8 +1,8 @@
-# OpenThaiGPT Deuplication Pipeline
+# Deuplication Pipeline
 
 ## Description
 
-The OpenThaiGPT Deduplication Pipeline is designed to remove duplicated entries from the Huggingface datasets. By using the techniques similar to this [paper](https://arxiv.org/abs/2107.06499), the pipeline uses the N-Gram MinHash approach in combination with LSH (Locality-Sensitive Hashing) to identify and eliminate duplicate content.
+The Deduplication Pipeline is designed to remove duplicated entries from the Huggingface datasets. By using the techniques similar to this [paper](https://arxiv.org/abs/2107.06499), the pipeline uses the N-Gram MinHash approach in combination with LSH (Locality-Sensitive Hashing) to identify and eliminate duplicate content.
 
 ![deduplication_diagram](deduplication_diagram.png)
 
