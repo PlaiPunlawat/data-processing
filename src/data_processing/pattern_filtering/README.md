@@ -45,11 +45,8 @@ The regex patterns are compiled in `pattern.py` and import to use in `preprocess
 | Date indicator text ("เผยแพร่เมื่อ", "ประกาศเมื่อ") |
 | Other spam ("แก้ไขครั้งสุดท้ายโดย", "แจ้งลิงก์เสีย") |
 
-## Running
-
-The code is imported in `src/data/scripts/internet` and you can use it together with OSCAR code there. 
-
-This code is not meant to be run directly. If you want to run with your custom logic please create folder in `src/data/scripts` and import the function you want.
+## How to use
+For details, see [How to use guide](src/scripts/pattern_perplexity/README.md).
 
 ## Note
 
