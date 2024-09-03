@@ -1,0 +1,6 @@
+sample_dataset:
+  name: SAMPLE_DATASET_TH
+  available_on_hub: False
+  path_name: /project/lt200258-aithai/may/datasets/sampled_dataset
+  split: train
+  subset:
