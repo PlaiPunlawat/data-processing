@@ -10,4 +10,4 @@ The Deduplication Pipeline is designed to remove duplicated entries from the Hug
 wget https://raw.githubusercontent.com/PyThaiNLP/pythainlp/dev/pythainlp/corpus/words_th.txt -P src/data_processing/deduplication
 
 ## How to use
-For details, see [How to use guide](src/scripts/deduplication/README.md).
+For details, see [How to use guide](../../../src/scripts/deduplication/README.md).
