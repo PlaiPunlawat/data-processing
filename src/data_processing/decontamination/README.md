@@ -8,4 +8,4 @@ This contamination check is based on N-Gram MinHash and LSH (Locality-Sensitive 
 ![deduplication_diagram](decontaminate_diagram.png)
 
 ## How to use
-For details, see [How to use guide](src/scripts/decontamination/README.md).
+For details, see [How to use guide](../../../src/scripts/decontamination/README.md).
