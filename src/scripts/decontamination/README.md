@@ -47,7 +47,6 @@ This contamination check is based on N-Gram MinHash and LSH (Locality-Sensitive 
 
 ## Usage
 
-**Prerequisites:** Install openthai-gpt-data depedencies because running this code [link](/src/data/README.md)
 
 Conda
 

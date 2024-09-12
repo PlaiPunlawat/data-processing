@@ -1,4 +1,4 @@
-# Deuplication Pipeline
+# Deduplication Pipeline
 
 ## Description
 
@@ -40,8 +40,6 @@ The Deduplication Pipeline is designed to remove duplicated entries from the Hug
 - Save all identified duplicate documents in a separate Huggingface dataset format. This provides a record of duplicates for reference or potential restoration.
 
 ## Usage
-
-**Prerequisites:** Install openthai-gpt-data depedencies because running this code [link](/src/data/README.md)
 
 Conda
 
