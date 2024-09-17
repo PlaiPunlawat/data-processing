@@ -1,5 +1,6 @@
 from data_processing.anonymization.anonymize import (
-    anonymize
+    anonymize,
+    ner_tag_transformer
 )
 import pandas as pd
 from datasets import Dataset
@@ -12,6 +13,22 @@ class TestAnonymize(unittest.TestCase):
     def test_person(self):
         text_test = "สมเด็จพระเทพรัตนราชสุดาฯ สยามบรมราชกุมารี ทรงเสด็จไปเยือนประเทศญี่ปุ่นเมื่อวันที่ 5 เมษายน 2564"
         result = anonymize(text_test)
+        print("text_test", text_test)
+        print("result", result)
+
+        self.assertIn("<person>", result)
+
+    def test_person_manual_model(self):
+        text_test = "ฉันชื่อ นางสาวมะลิวา บุญสระดี อาศัยอยู่ที่อำเภอนางรอง จังหวัดบุรีรัมย์ อายุ 23 ปี เพิ่งเรียนจบจาก มหาวิทยาลัยขอนแก่น และนี่คือข้อมูลปลอมชื่อคนไม่มีอยู่จริง อายุ 23 ปี"
+        result = anonymize(text_test, "thainer-v2")
+        print("text_test", text_test)
+        print("result", result)
+
+        self.assertIn("<person>", result)
+
+    def test_ner_tag_transformer_model(self):
+        text_test = "ฉันชื่อ นางสาวมะลิวา บุญสระดี อาศัยอยู่ที่อำเภอนางรอง จังหวัดบุรีรัมย์ อายุ 23 ปี เพิ่งเรียนจบจาก มหาวิทยาลัยขอนแก่น และนี่คือข้อมูลปลอมชื่อคนไม่มีอยู่จริง อายุ 23 ปี"
+        result = anonymize(text_test, ner_corpus="pythainlp/thainer-corpus-v2-base-model", NER_TAG=True)
         print("text_test", text_test)
         print("result", result)
 
@@ -51,4 +68,5 @@ class TestAnonymize(unittest.TestCase):
 
 
 if __name__ == "__main__":
+    TestAnonymize.NER_TAG_TRANSFORMER_MODEL = "pythainlp/thainer-corpus-v2-base-model"
     unittest.main()
