@@ -51,6 +51,12 @@ class TestPerplexity(unittest.TestCase):
             print(prediction.item(), log_pp_score)
             assert prediction == text["is_spam"]
 
+    def test_classify_spam_threshold(self):
+        for text in sample:
+            prediction, log_pp_score = classify_spam(text["doc"], 0.4)
+            print(prediction.item(), log_pp_score)
+            assert prediction == text["is_spam"]
+
 
 if __name__ == "__main__":
     unittest.main()

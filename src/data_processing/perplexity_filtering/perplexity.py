@@ -124,7 +124,7 @@ lm = SentencesLM()
 
 
 
-def classify_spam(text: str):
+def classify_spam(text: str, threshold=0.5):
     """
     This function classifies a given text as either spam or not spam.
     It uses perplexity scores and a decision tree model to make the prediction.
@@ -154,7 +154,8 @@ def classify_spam(text: str):
 
     # Use the decision tree model to predict whether the text is spam
     # ใช้โมเดล decision tree ในการทำนายประเภทของข้อความ
-    prediction = classifier.predict(pd.DataFrame({"log_score": [log_pp_score]}))
+    predicted_proba = classifier.predict_proba(pd.DataFrame({"log_score": [log_pp_score]}))
+    prediction = (predicted_proba [:,1] >= threshold).astype('int')
 
     # Return the prediction and the log perplexity score
     # ส่งคืนผลการทำนายและค่าลอการิทึมของคะแนน perplexity
