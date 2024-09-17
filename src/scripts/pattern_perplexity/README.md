@@ -19,16 +19,6 @@ You can also process the internet data via running `main.py`
 
 Before running. please dvc pull `core.zip`. It contains an n-gram language model weight and Decision Tree classifier.
 
-### DVC Pull instruction
-
-First please request dvc pull credentials from this [link](https://docs.google.com/forms/d/e/1FAIpQLSeXrHMGpmRM9Wj4AVXT5WIl7w96wuhjPUnbU0jCs5Ujb0LL_w/viewform)
-
-After you received credentials, download your credentials file to local repository, and run 
-
-```bash
-export GOOGLE_APPLICATION_CREDENTIALS= path/to/yourfile
-dvc push src/data_processing/perplexity_filtering/core.zip.dvc
-```
 
 ### Running Example
 ```bash
