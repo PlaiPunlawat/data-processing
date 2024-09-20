@@ -219,6 +219,7 @@ def clean_text(text: str, cutoff_character_length = 30) -> str:
 
     # Use various regex patterns to remove unwanted content from the text
     # ใช้ regex ต่าง ๆ เพื่อลบข้อความที่ไม่ต้องการออก
+    text = GAMBLE_RE.sub(" ", text)
     text = PAGE_RE.sub(" ", text)
     text = EMBEDDED_SERVER_RE.sub(" ", text)
     text = U_RE.sub(" ", text)
