@@ -1,0 +1,11 @@
+function
+var
+click
+margin
+width
+height
+return
+else
+alert
+<br>
+href

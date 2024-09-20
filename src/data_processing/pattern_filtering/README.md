@@ -46,7 +46,7 @@ The regex patterns are compiled in `pattern.py` and import to use in `preprocess
 | Other spam ("แก้ไขครั้งสุดท้ายโดย", "แจ้งลิงก์เสีย") |
 
 ## How to use
-For details, see [How to use guide](../../../src/scripts/pattern_perplexity/README.md).
+For details, see [How to use guide](../../../scripts/pattern_perplexity/README.md).
 
 ## Note
 

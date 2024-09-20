@@ -26,7 +26,7 @@ unzip core.zip -d src/data_processing/perplexity_filtering
 ```
 
 ## How to use
-For details, see [How to use guide](../../../src/scripts/pattern_perplexity/README.md).
+For details, see [How to use guide](../../../scripts/pattern_perplexity/README.md).
 
 ## Note
 
