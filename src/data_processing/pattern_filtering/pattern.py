@@ -26,6 +26,8 @@ from data_processing.pattern_filtering.words_pattern import (
     SCRIPT_THRESHOLD,
     GARBAGE_RE,
     GARBAGE_THRESHOLD,
+    PORN_RE,
+    PORN_THRESHOLD
 )
 
 # Regular Expression Pattern
@@ -84,6 +86,7 @@ from data_processing.pattern_filtering.regex_pattern import (
 # Default Word Pattern
 LIST_WORD_PATTERN = [
     {"KEY": "GAMBLE", "VALUE": {"PATTERN": GAMBLE_RE, "THRESHOLD": GAMBLE_THRESHOLD}},
+    {"KEY": "PORN", "VALUE": {"PATTERN": PORN_RE, "THRESHOLD": PORN_THRESHOLD}},
     {
         "KEY": "FOOTBALL",
         "VALUE": {"PATTERN": FOOTBALL_RE, "THRESHOLD": FOOTBALL_THRESHOLD},
@@ -220,6 +223,7 @@ def clean_text(text: str, cutoff_character_length = 30) -> str:
     # Use various regex patterns to remove unwanted content from the text
     # ใช้ regex ต่าง ๆ เพื่อลบข้อความที่ไม่ต้องการออก
     text = GAMBLE_RE.sub(" ", text)
+    text = PORN_RE.sub(" ", text)
     text = PAGE_RE.sub(" ", text)
     text = EMBEDDED_SERVER_RE.sub(" ", text)
     text = U_RE.sub(" ", text)
