@@ -135,6 +135,7 @@ def classify_spam(text: str, threshold=0.5):
     Parameters:
     text (str): The text to be classified as spam or not.
                 ข้อความที่ต้องการจัดประเภท
+    threshold (float): default=0.5 If the proba > threshold returns 1 else 0.
 
     Returns:
     tuple:
