@@ -48,6 +48,25 @@ The regex patterns are compiled in `pattern.py` and import to use in `preprocess
 ## How to use
 For details, see [How to use guide](../../../scripts/pattern_perplexity/README.md).
 
+## Adding New Keywords to the Corpus
+
+The `config` folder houses your corpus files (`.txt`), each categorized by type. To add a new keyword, simply append it to the relevant file.
+
+**Examples:**
+
+**Using Bash:**
+
+```bash
+echo "EVERTON" >> config/FOOTBALL_TEAMS.txt 
+```
+
+**Using Python:**
+
+```python
+with open("config/FOOTBALL_TEAMS.txt", "a", encoding="utf-8") as f:
+  f.write("Everton\n") 
+```
+
 ## Note
 
 - The keywords and patterns are from an observation and experiments on the sample of mc4 dataset.
