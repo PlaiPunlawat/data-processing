@@ -12,7 +12,17 @@ with open(GAMBLE_PATH) as my_file:
 
 GAMBLE_PATTERN = "|".join(GAMBLE_WORDS)
 GAMBLE_RE = re.compile(GAMBLE_PATTERN, re.MULTILINE)
-GAMBLE_THRESHOLD = 2
+GAMBLE_THRESHOLD = 1
+
+PORN_WORDS = None
+PORN_PATH = os.path.join(os.path.dirname(
+    __file__), 'config/PORN_WORDS.txt')
+with open(PORN_PATH) as my_file:
+    PORN_WORDS = my_file.read().splitlines()
+
+PORN_PATTERN = "|".join(PORN_WORDS)
+PORN_RE = re.compile(PORN_PATTERN, re.MULTILINE)
+PORN_THRESHOLD = 1
 
 # Sale Clean Words
 SALE_SKIP_WORDS = None
