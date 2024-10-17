@@ -1,10 +1,9 @@
 train_dataset:
   key: openthaigpt
   name: openthaigpt_pretraining_dataset
-  available_on_hub: False
+  available_on_hub: false
   path_name: /D:/NECTEC/Data/clean_TNRR_Data_ver2-1-3
-  subset:
-
+  subset: null
 blind_config:
   engine: openthaigpt
   save_path: /D:/NECTEC/Data/clean_TNRR_Data_ver2-1-3_blinded
